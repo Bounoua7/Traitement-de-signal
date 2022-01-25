@@ -1,21 +1,14 @@
-# Ts--Analyse-spectrale-d-un-signal TFD
 
 
-                                                                                       | 20/12/2021 |
 
 <h1 style="color:#0B615E;  text-align:center; vertical-align: middle; padding:40px 0; margin-top:30px " > Traitement de signal- Analyse spectrale d’un signal Transformée de Fourier discrète</h1>
              </br>
 
+<h4 style="background-color:#F6CEF5" > Réalisé par: OUM KOULTHOUME BOUNOUA </h4>
 
 
+------------
 
-</h2>
-<h4 style="color:#088A85;"> Introduction </h4>
-<p>
-
-><strong>A Text editor </strong> example is a simple example of creating an application with Qt. Specifically, the example uses QML to set up the user interface, C++ to implement the file operations, and the Qt tools to manage the project files and build environment.
-We will use Qt Quick Designer to add QML controls onto our application and set up the controls and resources. We will also implement the logic and connect the user interface to a C++ backend that will handle the saving and loading of text files.
-<strong> A SpreadSheet</strong> or worksheet is a file made of rows and columns that help sort, organize, and arrange data efficiently, and calculate numerical data. What makes a spreadsheet software program unique is its ability to calculate values using mathematical formulas and the data in cells. An example of how a spreadsheet may be utilized is creating an overview of your bank's balance. For example; Today, Microsoft Excel is the most popular and widely used spreadsheet program, but there are also many alternatives
 <h4 style="color:#088A85;"> Objectifs 
   
 </h4> •	Représentation de signaux et applications de la transformée de Fourier discrète (TFD) sous Matlab.
@@ -176,37 +169,91 @@ title('le spectre de puissance du signal bruité centré à 0 ');
 
 Il existe plusieurs signaux dont l’information est encodée dans des sinusoïdes. Les ondes sonores est un bon exemple. Considérons maintenant des données audios collectées à partir de microphones sous - marins au large de la Californie. On cherche à détecter à travers une analyse de Fourier le contenu fréquentiel d’une onde sonore émise pas un rorqual bleu.
 
-1-	Chargez, depuis le fichier ‘bluewhale.au’, le sous-ensemble de données qui correspond au chant du rorqual bleu du Pacifique. En effet, les appels de rorqual bleu sont des sons à basse fréquence, ils sont à peine audibles pour les humains. Utiliser la commande audioread pour lire le fichier. Le son à récupérer correspond aux indices allant de 2.45e4 à 3.10e4.
+1-	On a chargé, depuis un fichier ‘bluewhale.mp3’, le sous-ensemble de données qui correspond au chant du rorqual bleu du Pacifique. En effet, les appels de rorqual bleu sont des sons à basse fréquence, ils sont à peine audibles pour les humains. Le son à récupérer correspond aux indices allant de 2.45e4 à 3.10e4.
+
+```Matlab
+
+clear all 
+close all
+clc
+
+% la commande [w,fs]lit les données du fichier nommé bluewhale
+%renvoie des données échantillonnées y, et leur taux d'échantillonnage Fs.
+% audioread pour lire le fichier
+
+[y,fs] = audioread('bluewhale.mp3');      
+
+chant=y(2.45e4:3.10e4);
+subplot(2,1,1);
+
+```
 2-	Ecoutez ce signal en utilisant la commande sound, puis visualisez-le.
-La TFD peut être utilisée pour identifier les composantes fréquentielles de ce signal audio. Dans certaines applications qui traitent de grandes quantités de données avec fft, il est courant de redimensionner l'entrée de sorte que le nombre d'échantillons soit une puissance de 2. fft remplit automatiquement les données avec des zéros pour augmenter la taille de l'échantillon. Cela peut accélérer considérablement le calcul de la transformation.
-3-	Spécifiez une nouvelle longueur de signal n qui sera une puissance de 2, puis tracer la densité spectrale de puissance du signal.
 
+```Matlab
 
-<h5 style="color:#FF8000">spreadsheet.cpp file:</h5> 
+%la commande sound pour ecouter l'audio.
+soundsc(y,fs);
 
+Nchant=length(chant);
+t=[0:Nchant-1]*1/fs;
 
-
- <h5 style="color:#FF8000"> finddialog.cpp</h5>
-
-```c++
-
+%visualisez le signal
+plot(t,chant);
+title('Le signal de bluewhale fichier');
 
 ```
 
-<h5 style="color:#FF8000">result :</h5>
 
 
 
 
-------------
-<h3 style="color:#088A85"; > Conclusion </h3>
+
+
+https://user-images.githubusercontent.com/86807424/151029729-7f82b6db-8463-40de-b89e-74152530f0a1.mp4
+
+
+
+
+
+
+La TFD peut être utilisée pour identifier les composantes fréquentielles de ce signal audio. Dans certaines applications qui traitent de grandes quantités de données avec fft, il est courant de redimensionner l'entrée de sorte que le nombre d'échantillons soit une puissance de 2. fft remplit automatiquement les données avec des zéros pour augmenter la taille de l'échantillon. Cela peut accélérer considérablement le calcul de la transformation. </br>
+3-	Spécifiez une nouvelle longueur de signal n qui sera une puissance de 2, puis tracer la densité spectrale de puissance du signal.
+
+```Matlab
+
+%3
+
+fshift=[-Nchant/2:(Nchant/2)-1]*(fs/Nchant)/10;
+
+%Densité spectrale de puissance de 2
+DSP=abs(fft(chant).^2/Nchant);  
+
+%afficher la courbe 
+subplot(2,1,2);
+plot(fshift,fftshift(DSP));
+title('la densité spectrale de puissance du signal');
+
+```
+
+<p>
+On peut Déterminer à partir du tracé, la fréquence fondamentale du gémissement de rorqual 
+bleu.
+  </p>
   
   
->In this report we created main windows SpreadSheet using Qt , complete with menus, toolbars, status bar...
-and  mainwindow text editor program built around QPlainText.
+
+
+
+
+![f](https://user-images.githubusercontent.com/86807424/151027982-d7de6155-7652-4c16-8560-7c2e835f5fa9.png)
+
+
+
+
+
+
 
 --------
  
-<h4 style="background-color:#F6CEF5" > By: OUMKOULTHOUME BOUNOUA </h4>
   
   </div>
