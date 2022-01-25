@@ -1,7 +1,7 @@
 
 
 
-<h1 style="color:#0B615E;  text-align:center; vertical-align: middle; padding:40px 0; margin-top:30px " > Traitement de signal- Analyse spectrale d’un signal Transformée de Fourier discrète</h1>
+<h1 style="color:#0B615E;  text-align:center; vertical-align: middle; padding:40px 0; margin-top:30px " >Traitement de signal- Analyse spectrale d’un signal Transformée de Fourier discrète</h1>
              </br>
 
 <h4 style="background-color:#F6CEF5" > Réalisé par: OUM KOULTHOUME BOUNOUA </h4>
