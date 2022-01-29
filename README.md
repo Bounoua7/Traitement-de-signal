@@ -209,7 +209,10 @@ title('Le signal de bluewhale fichier');
 
 
 
-https://user-images.githubusercontent.com/86807424/151029729-7f82b6db-8463-40de-b89e-74152530f0a1.mp4
+
+https://user-images.githubusercontent.com/86807424/151647704-35cc6840-74ae-4cb4-840c-ecab50f53efa.mp4
+
+
 
 
 
